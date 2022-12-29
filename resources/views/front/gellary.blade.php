@@ -36,7 +36,7 @@
                   <img src="{{ asset('uploads/gellary/'.$v->image) }}" class="img-fluid" alt="">
                   <div class="gallery-links d-flex align-items-center justify-content-center">
                     <a href="{{ asset('uploads/gellary/'.$v->image) }}" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                    <a href="{{ route('gellary.single',Crypt::encrypt($v->id)) }}" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    <a href="{{ route('gellary.single',$v->slug) }}" class="details-link"><i class="bi bi-link-45deg"></i></a>
                   </div>
                 </div>
               </div><!-- End Gallery Item -->

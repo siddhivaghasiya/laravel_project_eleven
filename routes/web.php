@@ -10,6 +10,8 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\GellaryController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SocialmediaController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +57,17 @@ Route::get('service/{id}/edit', [Servicecontroller::class,'edit'])->name('servic
 Route::post('service/{id}/saveupdate', [Servicecontroller::class,'update'])->name('service.update');
 Route::any('service/{id}/delete', [Servicecontroller::class,'delete'])->name('service.delete');
 
+//SocialMedia
+
+Route::get('socialmedia', [SocialmediaController::class,'index'])->name('socialmedia.index');
+Route::get('socialmedia/get', [SocialmediaController::class,'anydata'])->name('socialmedia.anydata');
+Route::any('socialmedia/singleStatuschange', [SocialmediaController::class,'SingleStatusChange'])->name('socialmedia.Singlestatuschange');
+Route::get('socialmedia/add', [SocialmediaController::class,'create'])->name('socialmedia.create');
+Route::Post('socialmedia/save', [SocialmediaController::class,'store'])->name('socialmedia.store');
+Route::get('socialmedia/{id}/edit', [SocialmediaController::class,'edit'])->name('socialmedia.edit');
+Route::post('socialmedia/{id}/saveupdate', [SocialmediaController::class,'update'])->name('socialmedia.update');
+Route::any('socialmedia/{id}/delete', [SocialmediaController::class,'delete'])->name('socialmedia.delete');
+
 //testimonial
 
 Route::get('testimonial', [TestimonialController::class,'index'])->name('testimonial.index');
@@ -83,6 +96,11 @@ Route::any('gellary/{id}/delete', [GellaryController::class,'delete'])->name('ge
 Route::get('content', [ContentController::class,'index'])->name('content.index');
 Route::post('content/{id}/saveupdate', [ContentController::class,'update'])->name('content.update');
 
+//Setting
+
+Route::get('setting', [SettingController::class,'index'])->name('setting.index');
+Route::post('setting/{id}/saveupdate', [SettingController::class,'update'])->name('setting.update');
+
 //contact
 
 Route::get('contact', [ContactController::class,'index'])->name('contact.index');
@@ -99,7 +117,7 @@ Route::post('contactpage/store', [Homecontroller::class,'contactstore'])->name('
 Route::get('aboutpage', [Homecontroller::class,'about'])->name('aboutpage.index');
 
 Route::get('gellarypage', [Homecontroller::class,'gellary'])->name('gellarypage.index');
-Route::get('gellary/single/{id}', [Homecontroller::class,'gellarysingle'])->name('gellary.single');
+Route::get('gellary/single/{slug}', [Homecontroller::class,'gellarysingle'])->name('gellary.single');
 
 
 Route::get('servicepage', [Homecontroller::class,'service'])->name('servicepage.index');

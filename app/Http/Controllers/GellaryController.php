@@ -117,6 +117,7 @@ class GellaryController extends Controller
         $obj->name = $request->name;
         $obj->position = $request->position;
         $obj->status = $request->status;
+        $obj->slug = makeslug($request->name,'-');
 
         $img = $request->file('image');
 
@@ -175,6 +176,7 @@ class GellaryController extends Controller
         $obj->name = $request->name;
         $obj->position = $request->position;
         $obj->status = $request->status;
+        $obj->slug = makeslug($request->name,'-');
 
         $img = $request->file('image');
 

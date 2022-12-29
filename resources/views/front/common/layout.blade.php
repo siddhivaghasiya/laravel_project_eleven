@@ -23,11 +23,18 @@
                 </ul>
             </nav><!-- .navbar -->
 
+            <?php
+            $getdata = \App\Models\Socialmedia::where('status', 1)->get();
+            ?>
+
             <div class="header-social-links">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+                @if (isset($getdata) && !$getdata->isEmpty())
+
+                    @foreach ($getdata as $key => $v)
+                        <a href="{{ $v->link }}" target="_blank" class="{{ $v->title }}"><i class="{{ $v->icon }}"></i></a>
+                    @endforeach
+
+                @endif
             </div>
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>

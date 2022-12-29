@@ -135,7 +135,7 @@
                             <a class="nav-link dropdown-toggle" id="profileDropdown" href="#"
                                 data-toggle="dropdown">
                                 <img class="nav-profile-img mr-2" alt=""
-                                    src="{{ asset('admin/assets/images/faces/face1.jpg') }}" />
+                                    src="{{ asset('admin-asset/assets/images/faces/face1.jpg') }}" />
                                 <span class="profile-name">Henry Klein</span>
                             </a>
                             <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">

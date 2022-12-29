@@ -22,16 +22,17 @@
 
             <div class="row gy-4 justify-content-center">
                 <div class="col-lg-4">
-                    @if (isset($getdata))
-                        <img src="{{ asset('uploads/aboutus/' . $getdata->image) }}" class="img-fluid" alt="">
-                    @endif
+                    @if (isset($getcontent))
+
+                        <img src="{{ asset('uploads/content/' . $getcontent->image) }}" class="img-fluid" alt="">
+
 
                 </div>
                 <div class="col-lg-5 content">
-                    @if (isset($getdata))
-                        <h2>{{ $getdata->title }}</h2>
+
+                        <h2>{{ $getcontent->title }}</h2>
                         <p class="fst-italic py-3">
-                            {{ $getdata->short_description }}
+                            {{ $getcontent->short_description }}
                         </p>
                     @endif
 
@@ -62,9 +63,9 @@
                         </div>
                     </div>
 
-                    @if (isset($getdata))
+                    @if (isset($getcontent))
                         <p class="py-3">
-                            {{ $getdata->long_description }}
+                            {{ $getcontent->long_description }}
                         </p>
                     @endif
 

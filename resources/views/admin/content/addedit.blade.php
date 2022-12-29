@@ -258,6 +258,62 @@
                     </div>
 
 
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">About Image</label>
+                        <div class="col-sm-9">
+                            {!! Form::file('image', null, [
+                                'id' => 'image',
+                                'class' => 'form-control',
+                            ]) !!}
+
+                            @if ($errors->has('image'))
+                                <span class="text-danger">{{ $errors->first('image') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputUsername2" class="col-sm-3 col-form-label">About Title</label>
+                        <div class="col-sm-9">
+                            {!! Form::text('title', null, [
+                                'id' => 'title',
+                                'placeholder' => 'Enter title',
+                                'class' => 'form-control',
+                            ]) !!}
+                            @if ($errors->has('title'))
+                                <span class="text-danger">{{ $errors->first('title') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label"> About Short Description</label>
+                        <div class="col-sm-9">
+                            {!! Form::text('short_description', null, [
+                                'id' => 'short_description Description',
+                                'placeholder' => 'Enter Description',
+                                'class' => 'form-control',
+                            ]) !!}
+                            @if ($errors->has('short_description'))
+                                <span class="text-danger">{{ $errors->first('short_description') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label"> About Long Description</label>
+                        <div class="col-sm-9">
+                            {!! Form::text('long_description', null, [
+                                'id' => 'long_description',
+                                'placeholder' => 'Enter description',
+                                'class' => 'form-control',
+                            ]) !!}
+                            @if ($errors->has('long_description'))
+                                <span class="text-danger">{{ $errors->first('long_description') }}</span>
+                            @endif
+                        </div>
+                    </div>
 
                     {!! Form::submit('submit', ['class' => 'btn btn-primary', 'id' => 'saveBtn']) !!}
 

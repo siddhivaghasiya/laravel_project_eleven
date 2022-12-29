@@ -53,7 +53,7 @@ class Homecontroller extends Controller
 
     public function gellarysingle($id){
 
-        $getgellary = \App\Models\Gellary::where('id',Crypt::decrypt($id))->first();
+        $getgellary = \App\Models\Gellary::where('slug',$id)->first();
         $getcontent = \App\Models\Content::first();
 
             return view('front.gellary-single',compact('getgellary','getcontent'));

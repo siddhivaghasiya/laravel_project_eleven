@@ -8,9 +8,9 @@
             "></i>
                 </li>
                 <li class="ab">
-                      <a href="{{ route('service.index') }}">Service Listing</a><i class="mdi mdi-record"></i>
+                      <a href="{{ route('socialmedia.index') }}">Socialmedia Listing</a><i class="mdi mdi-record"></i>
                 <li class="ab active">
-                    Edit Service
+                    Edit Socialmedia
                 </li>
 
             </ul>
@@ -22,9 +22,9 @@
         "></i>
             </li>
             <li class="ab">
-                <a href="{{ route('service.index') }}">Service Listing</a><i class="mdi mdi-record"></i>
+                <a href="{{ route('socialmedia.index') }}">Socialmedia Listing</a><i class="mdi mdi-record"></i>
             <li class="ab active">
-                Add Service
+                Add Socialmedia
             </li>
 
         </ul>
@@ -36,31 +36,31 @@
                 <h4 class="card-title">
 
                     &nbsp; @if (isset($editdata))
-                        Edit Service
+                        Edit Socialmedia
                     @else
-                        Add Service
+                        Add Socialmedia
                     @endif
 
                     <hr>
 
-                    <p class="card-description">Service info</p>
+                    <p class="card-description">Socialmedia info</p>
 
                     @if (isset($editdata))
                     {{ Form::model($editdata, [
-                        'id' => 'service',
+                        'id' => 'socialmedia',
                         'class' => 'FromSubmit form-horizontal',
-                        'data-redirect_url' => route('service.index'),
-                        'url' => route('service.update', Crypt::encrypt($editdata->id)),
+                        'data-redirect_url' => route('socialmedia.index'),
+                        'url' => route('socialmedia.update', Crypt::encrypt($editdata->id)),
                         'method' => 'post',
                         'enctype' => 'multipart/form-data',
                     ]) }}
                 @else
                     {{ Form::open([
-                        'id' => 'service',
+                        'id' => 'socialmedia',
                         'class' => 'FromSubmit form-horizontal',
-                        'url' => route('service.store'),
-                        'data-redirect_url' => route('service.index'),
-                        'name' => 'service',
+                        'url' => route('socialmedia.store'),
+                        'data-redirect_url' => route('socialmedia.index'),
+                        'name' => 'socialmedia',
                         'enctype' => 'multipart/form-data',
                     ]) }}
                 @endif
@@ -98,15 +98,15 @@
 
 
                     <div class="form-group row">
-                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Description</label>
+                        <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Link</label>
                         <div class="col-sm-9">
-                            {!! Form::text('description', null, [
-                                'id' => 'description',
-                                'placeholder' => 'Enter Description',
+                            {!! Form::url('link', null, [
+                                'id' => 'link',
+                                'placeholder' => 'Enter link',
                                 'class' => 'form-control',
                             ]) !!}
-                            @if ($errors->has('description'))
-                                <span class="text-danger">{{ $errors->first('description') }}</span>
+                            @if ($errors->has('link'))
+                                <span class="text-danger">{{ $errors->first('link') }}</span>
                             @endif
                         </div>
                     </div>
@@ -129,7 +129,7 @@
 
                     {!! Form::submit('submit', ['class' => 'btn btn-primary', 'id' => 'saveBtn']) !!}
 
-                    <a href="{{ route('service.index') }}" class="btn btn-danger">Cancle</a>
+                    <a href="{{ route('socialmedia.index') }}" class="btn btn-danger">Cancle</a>
 
                     {!! Form::close() !!}
             </div>

@@ -7,20 +7,20 @@ use Illuminate\Routing\Controller;
 use Yajra\Datatables\Datatables;
 use Crypt;
 
-class Servicecontroller extends Controller
+class SocialmediaController extends Controller
 {
     //
 
     public function index(){
 
-        return view('admin.service.index');
+        return view('admin.socialmedia.index');
     }
 
 
     public function anydata(Request $request)
     {
 
-        $sql = \App\Models\Service::select("*");
+        $sql = \App\Models\Socialmedia::select("*");
 
 
         return Datatables::of($sql)
@@ -37,8 +37,8 @@ class Servicecontroller extends Controller
                 return $data->title;
             })
 
-            ->editColumn('description', function ($data) {
-                return $data->description;
+            ->editColumn('link', function ($data) {
+                return $data->link;
             })
 
             ->addColumn('status', function ($data) {
@@ -47,27 +47,27 @@ class Servicecontroller extends Controller
 
             ->addColumn('action', function ($data) {
 
-                $string = '<a href="'.route('service.edit',Crypt::encrypt($data->id)).'" class="btn btn-primary btn-sm"> <i class="mdi mdi-table-edit"></i> </a> <a href="javascript:void(0)" data-link="' . route('service.delete',Crypt::encrypt($data->id)) . '" class="btn btn-danger btn-sm delete"> <i class="mdi mdi-delete-forever"></i></a> ';
+                $string = '<a href="'.route('socialmedia.edit',Crypt::encrypt($data->id)).'" class="btn btn-primary btn-sm"> <i class="mdi mdi-table-edit"></i> </a> <a href="javascript:void(0)" data-link="' . route('socialmedia.delete',Crypt::encrypt($data->id)) . '" class="btn btn-danger btn-sm delete"> <i class="mdi mdi-delete-forever"></i></a> ';
 
 
                 return $string;
             })
             ->filter(function ($query) use ($request) {
             })
-            ->rawColumns(['id', 'icon', 'title', 'description', 'status', 'action'])
+            ->rawColumns(['id', 'icon', 'title', 'link', 'status', 'action'])
             ->make(true);
     }
 
     public function SingleStatusChange(Request $request)
     {
 
-        $l = \App\Models\Service::where('id', \Crypt::decrypt($request->id))->first();
+        $l = \App\Models\Socialmedia::where('id', \Crypt::decrypt($request->id))->first();
         if ($l != NULL) {
 
             if ($l->status == 1) {
-                $l->status = \App\Models\Service::STATUS_INACTIVE;
+                $l->status = \App\Models\Socialmedia::STATUS_INACTIVE;
             } else {
-                $l->status = \App\Models\Service::STATUS_ACTIVE;
+                $l->status = \App\Models\Socialmedia::STATUS_ACTIVE;
             }
             $l->save();
             return response()->json(['status' => $l->status]);
@@ -76,7 +76,7 @@ class Servicecontroller extends Controller
 
     public function create(){
 
-        return view('admin.service.addedit');
+        return view('admin.socialmedia.addedit');
     }
 
     public function store(Request $request){
@@ -84,14 +84,14 @@ class Servicecontroller extends Controller
         $request->validate([
             'icon' => 'required',
             'title' => 'required',
-            'description' => 'required',
+            'link' => 'required',
             'status' => 'required',
         ]);
 
-        $obj = new \App\Models\Service;
+        $obj = new \App\Models\Socialmedia;
         $obj->icon = $request->icon;
         $obj->title = $request->title;
-        $obj->description = $request->description;
+        $obj->link = $request->link;
         $obj->status = $request->status;
 
         $obj->save();
@@ -101,9 +101,9 @@ class Servicecontroller extends Controller
 
     public function edit($id){
 
-        $editdata = \App\Models\Service::where('id',Crypt::decrypt($id))->firstOrfail();
+        $editdata = \App\Models\Socialmedia::where('id',Crypt::decrypt($id))->firstOrfail();
 
-        return view('admin.service.addedit',compact('editdata'));
+        return view('admin.socialmedia.addedit',compact('editdata'));
     }
 
     public function update(Request $request,$id){
@@ -111,14 +111,14 @@ class Servicecontroller extends Controller
         $request->validate([
             'icon' => 'required',
             'title' => 'required',
-            'description' => 'required',
+            'link' => 'required',
             'status' => 'required',
         ]);
 
-        $obj =  \App\Models\Service::where('id',Crypt::decrypt($id))->first();
+        $obj =  \App\Models\Socialmedia::where('id',Crypt::decrypt($id))->first();
         $obj->icon = $request->icon;
         $obj->title = $request->title;
-        $obj->description = $request->description;
+        $obj->link = $request->link;
         $obj->status = $request->status;
 
         $obj->save();
@@ -128,7 +128,7 @@ class Servicecontroller extends Controller
 
     public function delete($id){
 
-        $obj = \App\Models\Service::where('id',Crypt::decrypt($id))->first();
+        $obj = \App\Models\Socialmedia::where('id',Crypt::decrypt($id))->first();
 
         $obj->delete();
 

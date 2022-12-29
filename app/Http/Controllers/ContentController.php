@@ -34,6 +34,10 @@ class ContentController extends Controller
             'testimonial_description' => 'required',
             'gellary_single_title' => 'required',
             'gellary_single_description' => 'required',
+            'image' => 'required',
+            'title' => 'required',
+            'short_description' => 'required',
+            'long_description' => 'required',
         ]);
 
 
@@ -52,6 +56,22 @@ class ContentController extends Controller
         $obj->testimonial_description = $request->testimonial_description;
         $obj->gellary_single_title = $request->gellary_single_title;
         $obj->gellary_single_description = $request->gellary_single_description;
+        $obj->title = $request->title;
+        $obj->short_description = $request->short_description;
+        $obj->long_description = $request->long_description;
+
+        $img = $request->file('image');
+
+        if ($request->hasFile('image')) {
+
+            @unlink('uploads/content/' . $obj->image);
+            $filename = rand() .'.'. $img->getClientOriginalExtension();
+            $img->move('uploads/content/', $filename);
+
+            $obj->image = $filename;
+
+
+        }
 
         $obj->save();
 

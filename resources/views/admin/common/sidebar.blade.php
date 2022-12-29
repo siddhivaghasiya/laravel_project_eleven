@@ -54,6 +54,10 @@
                         <i class="mdi mdi-contact-mail"></i>
                         <a class="" href="{{ route('contact.index') }}">ContactUS</a>
                     </li>
+                    <li class="nav-item">
+                        <i class="mdi mdi-signal-variant"></i>
+                        <a class="" href="{{ route('socialmedia.index') }}">SocialMedia</a>
+                    </li>
                 </ul>
             </div>
         </li>
@@ -65,12 +69,7 @@
             </a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="mdi mdi-contacts menu-icon"></i>
-                <span class="menu-title">Admin Management</span>
-            </a>
-        </li>
+
 
         <li class="nav-item">
             <a class="nav-link" href="pages/charts/chartjs.html">
