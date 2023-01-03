@@ -8,9 +8,18 @@
 
             <a href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
+
                 <!-- <img src="assets/img/logo.png" alt=""> -->
-                <i class="bi bi-camera"></i>
-                <h1>PhotoFolio</h1>
+                <?php
+                $getsetting = \App\Models\Setting::first();
+                ?>
+
+                @if (isset($getsetting))
+                    <i class="{{ $getsetting->icon }}"></i>
+
+                    <h1>{{ $getsetting->logo }}</h1>
+                @endif
+
             </a>
 
             <nav id="navbar" class="navbar">
@@ -31,7 +40,8 @@
                 @if (isset($getdata) && !$getdata->isEmpty())
 
                     @foreach ($getdata as $key => $v)
-                        <a href="{{ $v->link }}" target="_blank" class="{{ $v->title }}"><i class="{{ $v->icon }}"></i></a>
+                        <a href="{{ $v->link }}" target="_blank" class="{{ $v->title }}"><i
+                                class="{{ $v->icon }}"></i></a>
                     @endforeach
 
                 @endif

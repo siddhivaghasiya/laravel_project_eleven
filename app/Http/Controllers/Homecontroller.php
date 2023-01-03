@@ -19,8 +19,9 @@ class Homecontroller extends Controller
     public function contact(){
 
         $getcontent = \App\Models\Content::first();
+        $getsetting = \App\Models\Setting::first();
 
-        return view('front.contact',compact('getcontent'));
+        return view('front.contact',compact('getcontent','getsetting'));
     }
 
     public function contactstore(Request $request){

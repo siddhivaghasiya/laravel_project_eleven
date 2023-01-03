@@ -291,7 +291,7 @@
                         <label for="exampleInputPassword2" class="col-sm-3 col-form-label"> About Short Description</label>
                         <div class="col-sm-9">
                             {!! Form::text('short_description', null, [
-                                'id' => 'short_description Description',
+                                'id' => 'short_description',
                                 'placeholder' => 'Enter Description',
                                 'class' => 'form-control',
                             ]) !!}

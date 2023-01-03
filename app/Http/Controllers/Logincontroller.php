@@ -7,24 +7,37 @@ use Auth;
 
 class Logincontroller extends Controller
 {
-    public function create(){
+    public function create()
+    {
 
-    	return view('admin.auth.login');
+        if(\Auth::check()){
+
+            return redirect()->route('admin');
+        }
+        return view('admin.auth.login');
     }
 
-    public function postlogin(Request $request){
+    public function postlogin(Request $request)
+    {
 
         $request->validate([
 
-               'email' => 'required',
-               'password' => 'required',
-           ]);
+            'email' => 'required',
+            'password' => 'required',
+        ]);
 
-           if (Auth::attempt(['email'=>$request->email,'password'=>$request->password])) {
-               return redirect()->route('admin');
-           }
-           return false;
-       }
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
 
+            return redirect()->route('admin');
+        }
 
+        return false;
+    }
+
+    public function logout(){
+
+        \Auth::logout();
+
+        return redirect()->route('login');
+    }
 }

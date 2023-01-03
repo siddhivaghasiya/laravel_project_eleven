@@ -1,5 +1,6 @@
 @extends('admin.layout')
 @section('content')
+
     <div class="col-xl-3 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3 pb-lg-0 pb-xl-3">
         <div class="card bg-danger">
             <div class="card-body px-3 py-4">

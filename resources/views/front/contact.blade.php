@@ -7,8 +7,8 @@
         <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
                 @if (isset($getcontent))
-                <h2>{{ $getcontent->contact_title }}</h2>
-                <p>{{ $getcontent->contact_description }}</p>
+                    <h2>{{ $getcontent->contact_title }}</h2>
+                    <p>{{ $getcontent->contact_description }}</p>
                 @endif
 
             </div>
@@ -21,37 +21,39 @@
         <div class="container">
 
             <div class="row gy-4 justify-content-center">
+                @if (isset($getsetting))
 
-                <div class="col-lg-3">
-                    <div class="info-item d-flex">
-                        <i class="bi bi-geo-alt flex-shrink-0"></i>
-                        <div>
-                            <h4>Location:</h4>
-                            <p>A108 Adam Street, New York, NY 535022</p>
+                    <div class="col-lg-3">
+                        <div class="info-item d-flex">
+                            <i class="bi bi-geo-alt flex-shrink-0"></i>
+                            <div>
+                                <h4>Location:</h4>
+                                <p>{{ $getsetting->location}}</p>
+                            </div>
                         </div>
-                    </div>
-                </div><!-- End Info Item -->
+                    </div><!-- End Info Item -->
 
-                <div class="col-lg-3">
-                    <div class="info-item d-flex">
-                        <i class="bi bi-envelope flex-shrink-0"></i>
-                        <div>
-                            <h4>Email:</h4>
-                            <p>info@example.com</p>
+                    <div class="col-lg-3">
+                        <div class="info-item d-flex">
+                            <i class="bi bi-envelope flex-shrink-0"></i>
+                            <div>
+                                <h4>Email:</h4>
+                                <p>{{ $getsetting->email}}</p>
+                            </div>
                         </div>
-                    </div>
-                </div><!-- End Info Item -->
+                    </div><!-- End Info Item -->
 
-                <div class="col-lg-3">
-                    <div class="info-item d-flex">
-                        <i class="bi bi-phone flex-shrink-0"></i>
-                        <div>
-                            <h4>Call:</h4>
-                            <p>+1 5589 55488 55</p>
+                    <div class="col-lg-3">
+                        <div class="info-item d-flex">
+                            <i class="bi bi-phone flex-shrink-0"></i>
+                            <div>
+                                <h4>Call:</h4>
+                                <p>{{ $getsetting->number}}</p>
+                            </div>
                         </div>
-                    </div>
-                </div><!-- End Info Item -->
+                    </div><!-- End Info Item -->
 
+                @endif
             </div>
 
             <div class="row justify-content-center mt-4">
@@ -61,7 +63,7 @@
 
                     {{ Form::open([
                         'id' => 'contact',
-                        'class' => 'FromSubmit form-horizontal',
+                        'class' => 'FromSubmit php-email-form',
                         'url' => route('contactpage.store'),
                         'data-redirect_url' => route('contactpage.index'),
                         'name' => 'contact',
@@ -77,7 +79,7 @@
                                 'id' => 'name',
                                 'placeholder' => 'Enter name',
                                 'class' => 'form-control',
-                           ]) !!}
+                            ]) !!}
                             @if ($errors->has('name'))
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             @endif

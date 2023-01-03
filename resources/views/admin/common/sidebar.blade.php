@@ -72,7 +72,7 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="pages/charts/chartjs.html">
+            <a class="nav-link" href="{{ route('setting.index') }}">
                 <i class="mdi mdi-settings menu-icon"></i>
                 <span class="menu-title">General Setting</span>
             </a>
@@ -83,7 +83,8 @@
             <div class="nav-link">
                 <div class="mt-4">
                     <ul class="mt-4 pl-0">
-                        <li>Sign Out</li>
+                        <li>
+                            <a href="{{ route('logout') }}">Sign Out</a>  </li>
                     </ul>
                 </div>
             </div>
